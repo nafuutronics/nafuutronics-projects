@@ -1,0 +1,43 @@
+:root {
+    --dark-blue: #0d1622;
+    --dark-red: #a84259;
+    --red: #cf5571;
+}
+
+.bg-dark-blue {
+    background-color: var(--dark-blue);
+}
+
+.bg-dark-red {
+    background-color: var(--dark-red);
+}
+
+.bg-red {
+    background-color: var(--red);
+}
+
+.light-shadow {
+    box-shadow: whitesmoke 2px 2px;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.float-left {
+    float: left !important;
+}
+
+.form-button {
+    width: fit-content !important;
+    margin: 0 2 0 0 !important;
+    padding: 0 !important;
+}
+
+.bg-blue {
+    background-color: lightblue !important;
+}
+
+.bg-pink {
+    background-color: pink !important;
+}
