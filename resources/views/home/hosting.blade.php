@@ -3,29 +3,34 @@
 @section('content')
 <div class="container px-5 my-5">
     <div class="text-center mb-5">
-        <h1 class="fw-bolder">Projects Hosting</h1>
-        <p class="lead fw-normal text-muted mb-0">We provide open hosting to our projects as well as outsourced projects</p>
+        <h1 class="fw-bolder">IoT Projects Hosting</h1>
+        <p class="lead fw-normal text-muted mb-0">In this page you can find list of all public hosted IoT projects, click the project to see details of data collection and controlling actions.</p>
     </div>
     <div class="row gx-5 table-responsive">
         <table class="table table-bordered table-hover">
-            <tr>
-                <th>Project</th>
-                <th>Category</th>
-                <th>URL</th>
-                <th>Hosted On:</th>
-            </tr>
-            <tr>
-                <td>Smart Aquarium</td>
-                <td>IoT</td>
-                <td><a href="/iot/smart-aquarium">https://projects.nafuutronics.com/iot/smart-aquarium</a></td>
-                <td>06/06/2021</td>
-            </tr>
-            <tr>
-                <td>Stunt Detector</td>
-                <td>IoT</td>
-                <td><a href="/iot/smart-bed">https://projects.nafuutronics.com/iot/smart-bed</a></td>
-                <td>06/06/2021</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Project</th>
+                    <th>Category</th>
+                    <th>Hosted Since</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="/iot/smart-aquarium">Smart Aquarium</a>
+                    </td>
+                    <td>IoT</td>
+                    <td>06 June 2021</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="/iot/smart-bed">Stunt Detector</a>
+                    </td>
+                    <td>IoT</td>
+                    <td>06 June 2021</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>

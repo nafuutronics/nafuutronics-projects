@@ -7,7 +7,7 @@
              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                  <li class="nav-item"><a class="nav-link" href="/index">Home</a></li>
                  <li class="nav-item"><a class="nav-link" href="/portfolio">Portfolio</a></li>
-                 <li class="nav-item"><a class="nav-link" href="/p-hosting">P-Hosting</a></li>
+                 <li class="nav-item"><a class="nav-link" href="/p-hosting">IoT Hosting</a></li>
                  <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
                  <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                  <li class="nav-item"><a class="nav-link" href="/faq">FAQ</a></li>
