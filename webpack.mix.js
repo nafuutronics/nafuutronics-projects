@@ -15,3 +15,7 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+
+mix
+    .copy('node_modules/jquery/dist/', 'public/frontend/jquery', false)
+    .copy('node_modules/datatables/media', 'public/frontend/datatables', false);

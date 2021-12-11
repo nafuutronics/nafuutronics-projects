@@ -32,35 +32,39 @@ function dateDifference($date_1, $date_2, $differenceFormat = '%a')
     @endif
     <table class="table table-responsive table-hover">
         @if (count($users) > 0)
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Age</th>
-            <th>Height</th>
-            <th>Weight</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
         @foreach($users as $user)
-        <tr>
-            <td>{{$user['id']}}</td>
-            <td>{{$user['firstName'] . ' ' . $user['lastName']}}</td>
-            <td>{{$user['gender']}}</td>
-            <td id="<?= $user['id'] ?>">
-                <?php
-                $months = dateDifference(date('Y-m-d'), $user['dateOfBirth'], '%m');
-                ?>
-                {{$months}} month(s)
-            </td>
-            <td>{{$user['lastHeight'] ?? null ? $user['lastHeight'] . 'cm' : 'N/A'}}</td>
-            <td>{{$user['lastWeight'] ?? null ? $user['lastWeight'] . 'kg' : 'N/A'}}</td>
-            <td>{{$user['lastStatus'] ?? null ? $user['lastStatus'] : 'N/A'}}</td>
-            <td>
-                <a href="/iot/smart-bed?pull_data=1&user_id={{ $user['id'] }}&months={{$months}}&gender={{$user['gender']}}" class="btn btn-success btn-sm"><i class="bi bi-download"></i> Pull H&W</a>
-            </td>
-        </tr>
-        @endforeach
+            <tr>
+                <td>{{$user['id']}}</td>
+                <td>{{$user['firstName'] . ' ' . $user['lastName']}}</td>
+                <td>{{$user['gender']}}</td>
+                <td id="<?= $user['id'] ?>">
+                    <?php
+                    $months = dateDifference(date('Y-m-d'), $user['dateOfBirth'], '%m');
+                    ?>
+                    {{$months}} month(s)
+                </td>
+                <td>{{$user['lastHeight'] ?? null ? $user['lastHeight'] . 'cm' : 'N/A'}}</td>
+                <td>{{$user['lastWeight'] ?? null ? $user['lastWeight'] . 'kg' : 'N/A'}}</td>
+                <td>{{$user['lastStatus'] ?? null ? $user['lastStatus'] : 'N/A'}}</td>
+                <td>
+                    <a href="/iot/smart-bed?pull_data=1&user_id={{ $user['id'] }}&months={{$months}}&gender={{$user['gender']}}" class="btn btn-success btn-sm"><i class="bi bi-download"></i> Pull H&W</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
         @else
         <tr>
             <td class="text-center">No users found, try adding at top right.</td>

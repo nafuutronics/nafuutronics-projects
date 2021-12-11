@@ -16,6 +16,8 @@
         "postcss": "^8.1.14"
     },
     "dependencies": {
-        "chart.js": "^3.3.2"
+        "chart.js": "^3.3.2",
+        "datatables": "^1.10.18",
+        "jquery": "^3.6.0"
     }
 }

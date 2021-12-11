@@ -1,0 +1,10 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/frontend/jquery/jquery.js": "/frontend/jquery/jquery.js",
+    "/frontend/jquery/jquery.min.js": "/frontend/jquery/jquery.min.js",
+    "/frontend/jquery/jquery.min.map": "/frontend/jquery/jquery.min.map",
+    "/frontend/jquery/jquery.slim.js": "/frontend/jquery/jquery.slim.js",
+    "/frontend/jquery/jquery.slim.min.js": "/frontend/jquery/jquery.slim.min.js",
+    "/frontend/jquery/jquery.slim.min.map": "/frontend/jquery/jquery.slim.min.map"
+}

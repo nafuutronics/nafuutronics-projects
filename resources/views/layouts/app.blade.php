@@ -14,6 +14,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
     <link href="{{asset('css/custom-styles.css')}}" rel="stylesheet" />
+    <link href="/frontend/datatables/css/jquery.dataTables.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -31,7 +32,11 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="/frontend/jquery/jquery.min.js"></script>
+    <script src="/frontend/datatables/js/jquery.dataTables.min.js"></script>
     <script>
+        $('table').dataTable();
+
         function confirmDeletion(formID, message) {
             var confirmed = confirm(message);
             if (confirmed) {
