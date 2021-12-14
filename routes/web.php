@@ -30,6 +30,7 @@ Route::get('storage-link', [HomeController::class, 'storageLink']);
 Route::group(array('prefix' => 'iot'), function () {
     Route::group(array('prefix' => 'smart-bed'), function () {
         Route::get('get-data', [SmartBedsController::class, 'getData']);
+        Route::get('stunting-who-data', [SmartBedsController::class, 'stuntingData']);
     });
     Route::resource('smart-bed', SmartBedsController::class);
     Route::resource('smart-aquarium', SmartAquariumsController::class);

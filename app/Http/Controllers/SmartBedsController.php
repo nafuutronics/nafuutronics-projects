@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SmartBed;
 use App\Models\SmartBedUser;
 use App\Models\StuntDataHeightAge;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -46,13 +47,18 @@ class SmartBedsController extends Controller
             if ($zIndex < -3)
                 $status = "Stunted";
 
-            $sendData = Http::post('http://vmi515671.contaboserver.net:8081/clinic-data', [
-                'id' => $user_id,
-                'status' => $status,
-                'height' => $height,
-                'weight' => $weight,
-                'month' => $months
-            ]);
+            try {
+                $sendData = Http::post('http://vmi515671.contaboserver.net:8081/clinic-data', [
+                    'id' => $user_id,
+                    'status' => $status,
+                    'height' => $height,
+                    'weight' => $weight,
+                    'month' => $months
+                ]);
+            } catch (Exception $e) {
+                $error = 'There was a problem updating data!';
+                return redirect()->route('smart-bed.index')->with('error', $error);
+            }
 
             if ($sendData->status() == 200) {
                 $success = 'Data has been updated!';
@@ -62,7 +68,12 @@ class SmartBedsController extends Controller
                 return redirect()->route('smart-bed.index')->with('error', $error);
             }
         }
-        $users = Http::get('http://vmi515671.contaboserver.net:8081/children')['children'];
+
+        try {
+            $users = Http::get('http://vmi515671.contaboserver.net:8081/children')['children'];
+        } catch (Exception $e) {
+            $users = [];
+        }
 
         return view('smart-bed.index', compact('users'));
     }
@@ -82,6 +93,14 @@ class SmartBedsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+    { }
+
+    /**
+     * Shows WHO studing data.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function stuntingData()
     {
         $stuntingData = StuntDataHeightAge::all();
         return view('smart-bed.create', compact('stuntingData'));

@@ -17,7 +17,7 @@ function dateDifference($date_1, $date_2, $differenceFormat = '%a')
         <p class="lead fw-normal text-muted mb-0">Project Hosted on {{ config('app.name') }}</p>
     </div>
     <p class="text-center mb-5">
-        <a href="/iot/smart-bed/create" class="btn btn-link"><b>WHO</b> Child Growth Standards </a>
+        <a href="/iot/smart-bed/stunting-who-data" class="btn btn-link"><b>WHO</b> Child Growth Standards </a>
     </p>
     @if(Session::has('success'))
     <div class="alert alert-success">
