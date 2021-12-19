@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SmartMeter;
 use App\Models\SmartMeterTariff;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class SmartMetersController extends Controller
@@ -77,6 +78,14 @@ class SmartMetersController extends Controller
             $tariff->save();
         }
         return 1;
+    }
+
+    public function seedSmartMeter()
+    {
+        Artisan::call('db:seed --class=SmartMeterSeeder');
+        return response()->json([
+            'message' => Artisan::output()
+        ], 200);
     }
 
     /**
