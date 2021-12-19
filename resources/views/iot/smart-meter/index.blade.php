@@ -9,7 +9,7 @@
 
     <div class="col-md-3 m-auto">
         <a href="?" class="btn btn-primary btn-sm m-1">Refresh</a>
-        <a href="/iot/smart-meter/update-tariff" class="btn btn-warning btn-block btn-sm m-1 float-right">Change tariff to {{ !$tariff ? "high" : "low" }}</a>
+        <a href="/iot/smart-meter/update-tariff" class="btn btn-warning btn-block btn-sm m-1 float-right">Change Tariff to {{ !$tariff ? "High" : "Low" }}</a>
     </div>
 
     <table class="table table-responsive table-hover">
@@ -33,66 +33,73 @@
             <td>{{ $smartMeter->current }} A</td>
         </tr>
     </table>
-    <div class="mt-5 table-responsive">
-        <h5 class="text-center">Data Collection (Room 1)</h5>
-        <table class="table table-hover table-bordered">
 
-            <tr>
-                <th>Energy</th>
-                <th>Voltage</th>
-                <th>Current</th>
-                <th>Uploaded At</th>
-            </tr>
-            @foreach($smartMeter1 as $data)
-            <tr>
-                <td>{{$data->energy . ' Wh'}}</td>
-                <td>{!!$data->voltage . ' V'!!}</td>
-                <td>{!!$data->current . ' A'!!}</td>
-                <td>{{$data->created_at ? $data->created_at : '-'}}</td>
-            </tr>
-            @endforeach
-        </table>
-        {{ $smartMeter1->links() }}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mt-5 table-responsive">
+                <h5 class="text-center">Data Collection (Room 1)</h5>
+                <table class="table table-hover table-bordered">
+                    <tr>
+                        <th>Energy</th>
+                        <th>Voltage</th>
+                        <th>Current</th>
+                        <th>Uploaded At</th>
+                    </tr>
+                    @foreach($smartMeter1 as $data)
+                    <tr>
+                        <td>{{$data->energy . ' Wh'}}</td>
+                        <td>{!!$data->voltage . ' V'!!}</td>
+                        <td>{!!$data->current . ' A'!!}</td>
+                        <td>{{$data->created_at ? $data->created_at : '-'}}</td>
+                    </tr>
+                    @endforeach
+                </table>
+                {{ $smartMeter1->links() }}
+            </div>
+
+            <div class="mt-5">
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                    <p class="highcharts-description text-center">
+                        This chart shows energy usage collected on smart meter device(s).
+                    </p>
+                </figure>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="mt-5 table-responsive">
+                <h5 class="text-center">Data Collection (Room 2)</h5>
+                <table class="table table-hover table-bordered">
+
+                    <tr>
+                        <th>Energy</th>
+                        <th>Voltage</th>
+                        <th>Current</th>
+                        <th>Uploaded At</th>
+                    </tr>
+                    @foreach($smartMeter2 as $data)
+                    <tr>
+                        <td>{{$data->energy}}</td>
+                        <td>{!!$data->voltage . ' V'!!}</td>
+                        <td>{!!$data->current . ' A'!!}</td>
+                        <td>{{$data->created_at ? $data->created_at : '-'}}</td>
+                    </tr>
+                    @endforeach
+                </table>
+                {{ $smartMeter2->links() }}
+            </div>
+
+            <div class="mt-5">
+                <figure class="highcharts-figure">
+                    <div id="container2"></div>
+                    <p class="highcharts-description text-center">
+                        This chart shows energy usage collected on smart meter device(s).
+                    </p>
+                </figure>
+            </div>
+        </div>
     </div>
 
-    <div class="mt-5">
-        <figure class="highcharts-figure">
-            <div id="container"></div>
-            <p class="highcharts-description text-center">
-                This chart shows energy usage collected on smart meter device(s).
-            </p>
-        </figure>
-    </div>
-
-    <div class="mt-5 table-responsive">
-        <h5 class="text-center">Data Collection (Room 2)</h5>
-        <table class="table table-hover table-bordered">
-
-            <tr>
-                <th>Energy</th>
-                <th>Voltage</th>
-                <th>Current</th>
-                <th>Uploaded At</th>
-            </tr>
-            @foreach($smartMeter2 as $data)
-            <tr>
-                <td>{{$data->energy}}</td>
-                <td>{!!$data->voltage . ' V'!!}</td>
-                <td>{!!$data->current . ' A'!!}</td>
-                <td>{{$data->created_at ? $data->created_at : '-'}}</td>
-            </tr>
-            @endforeach
-        </table>
-        {{ $smartMeter2->links() }}
-    </div>
-
-    <div class="mt-5">
-        <figure class="highcharts-figure">
-            <div id="container2"></div>
-            <p class="highcharts-description text-center">
-                This chart shows energy usage collected on smart meter device(s).
-            </p>
-        </figure>
-    </div>
 </div>
 @endsection
