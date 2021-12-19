@@ -18,6 +18,13 @@
             <tbody>
                 <tr>
                     <td>
+                        <a href="/iot/smart-meter">Smart Meter</a>
+                    </td>
+                    <td>IoT</td>
+                    <td>18 December 2021</td>
+                </tr>
+                <tr>
+                    <td>
                         <a href="/iot/smart-aquarium">Smart Aquarium</a>
                     </td>
                     <td>IoT</td>

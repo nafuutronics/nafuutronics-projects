@@ -35,8 +35,6 @@
     <script src="/frontend/jquery/jquery.min.js"></script>
     <script src="/frontend/datatables/js/jquery.dataTables.min.js"></script>
     <script>
-        $('table').dataTable();
-
         function confirmDeletion(formID, message) {
             var confirmed = confirm(message);
             if (confirmed) {
@@ -89,6 +87,93 @@
                 ]
             });
         <?php } ?>
+
+        <?php if (isset($smartMeter1)) { ?>
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Energy Usage on Room 1'
+                },
+                subtitle: {
+                    text: 'Source: Smart Meter Device'
+                },
+                xAxis: {
+
+                },
+                yAxis: {
+                    title: {
+                        text: 'Usage of Energy, Voltage and Current'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                        name: 'Energy(Wh)',
+                        data: [<?php foreach ($smartMeter1 as $data) { ?> <?= $data->energy . ', ' ?> <?php } ?>]
+                    }, {
+                        name: 'Voltage',
+                        data: [<?php foreach ($smartMeter1 as $data) { ?> <?= $data->voltage . ', ' ?> <?php } ?>]
+                    },
+                    {
+                        name: 'Current',
+                        data: [<?php foreach ($smartMeter1 as $data) { ?> <?= $data->current . ', ' ?> <?php } ?>]
+                    }
+                ]
+            });
+        <?php } ?>
+
+
+        <?php if (isset($smartMeter2)) { ?>
+            Highcharts.chart('container2', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Energy Usage on Room 2'
+                },
+                subtitle: {
+                    text: 'Source: Smart Meter Device'
+                },
+                xAxis: {
+
+                },
+                yAxis: {
+                    title: {
+                        text: 'Usage of Energy, Voltage and Current'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                        name: 'Energy(Wh)',
+                        data: [<?php foreach ($smartMeter2 as $data) { ?> <?= $data->energy . ', ' ?> <?php } ?>]
+                    }, {
+                        name: 'Voltage',
+                        data: [<?php foreach ($smartMeter2 as $data) { ?> <?= $data->voltage . ', ' ?> <?php } ?>]
+                    },
+                    {
+                        name: 'Current',
+                        data: [<?php foreach ($smartMeter2 as $data) { ?> <?= $data->current . ', ' ?> <?php } ?>]
+                    }
+                ]
+            });
+        <?php } ?>
+
+        $('table').dataTable();
     </script>
 </body>
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SmartAquariumsController;
 use App\Http\Controllers\SmartBedsController;
+use App\Http\Controllers\SmartMetersController;
 use App\Models\SmartBed;
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +35,11 @@ Route::group(array('prefix' => 'iot'), function () {
     });
     Route::resource('smart-bed', SmartBedsController::class);
     Route::resource('smart-aquarium', SmartAquariumsController::class);
+
+    Route::group(array('prefix' => 'smart-meter'), function () {
+        Route::get('get-tariff', [SmartMetersController::class, 'getTariff']);
+        Route::get('update-tariff', [SmartMetersController::class, 'updateTariff']);
+    });
+    Route::resource('smart-meter', SmartMetersController::class);
+    Route::get('seed-smart-meter', [HomeController::class, 'seedSmartMeter']);
 });
