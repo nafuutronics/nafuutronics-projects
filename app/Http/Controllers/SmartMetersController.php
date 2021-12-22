@@ -19,14 +19,14 @@ class SmartMetersController extends Controller
     {
         if ($request->get('room1')) {
             $smartMeter = new SmartMeter;
-            $smartMeter->smart_meter_room_id = $request->get('room1');
+            $smartMeter->smart_meter_room_id = 1;
             $smartMeter->energy = $request->get('energy1');
             $smartMeter->voltage = $request->get('voltage1');
             $smartMeter->current = $request->get('current1');
             $smartMeter->save();
 
             $smartMeter = new SmartMeter;
-            $smartMeter->smart_meter_room_id = $request->get('room2');
+            $smartMeter->smart_meter_room_id = 2;
             $smartMeter->energy = $request->get('energy2');
             $smartMeter->voltage = $request->get('voltage2');
             $smartMeter->current = $request->get('current2');
