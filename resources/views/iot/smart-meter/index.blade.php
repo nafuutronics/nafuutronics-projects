@@ -5,10 +5,11 @@
         <h1 class="fw-bolder">Smart Meter(s)</h1>
         <p class="lead fw-normal text-muted mb-0">Project Hosted on {{ config('app.name') }}</p>
     </div>
-    <h5 class="text-center">Real-time Data as of {{ $smartMeterData->created_at }}</h5>
+    <h5 class="text-center">Real-time Data as of {{ $smartMeterData ? $smartMeterData->created_at : "N/A" }}</h5>
 
-    <div class="col-md-3 m-auto">
+    <div class="col-md-4 m-auto">
         <a href="?" class="btn btn-primary btn-sm m-1">Refresh</a>
+        <a href="/iot/smart-meter/delete-tariff" class="btn btn-danger btn-sm m-1">Clear Data</a>
         <a href="/iot/smart-meter/update-tariff" class="btn btn-warning btn-block btn-sm m-1 float-right">Change Tariff to {{ !$tariff ? "High" : "Low" }}</a>
     </div>
 

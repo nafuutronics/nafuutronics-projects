@@ -39,6 +39,7 @@ Route::group(array('prefix' => 'iot'), function () {
     Route::group(array('prefix' => 'smart-meter'), function () {
         Route::get('get-tariff', [SmartMetersController::class, 'getTariff']);
         Route::get('update-tariff', [SmartMetersController::class, 'updateTariff']);
+        Route::get('delete-tariff', [SmartMetersController::class, 'deleteTariff']);
         Route::get('seed', [SmartMetersController::class, 'seedSmartMeter']);
     });
     Route::resource('smart-meter', SmartMetersController::class);

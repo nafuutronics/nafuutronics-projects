@@ -88,6 +88,12 @@ class SmartMetersController extends Controller
         return 1;
     }
 
+    public function deleteTariff()
+    {
+        SmartMeter::where('id', '!=', 0)->delete();
+        return redirect()->route('smart-meter.index');
+    }
+
     public function seedSmartMeter()
     {
         Artisan::call('db:seed --class=SmartMeterSeeder');
