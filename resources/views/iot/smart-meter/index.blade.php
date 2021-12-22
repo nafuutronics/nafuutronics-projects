@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('content')
+<style>
+    .btn-block {
+        width: 100% !important;
+    }
+</style>
 <div class="container px-5 my-5">
     <div class="text-center mb-5">
         <h1 class="fw-bolder">Smart Meter(s)</h1>
@@ -7,10 +12,17 @@
     </div>
     <h5 class="text-center">Real-time Data as of {{ $smartMeterData ? $smartMeterData->created_at : "N/A" }}</h5>
 
-    <div class="col-md-4 m-auto">
-        <a href="?" class="btn btn-primary btn-sm m-1">Refresh</a>
-        <a href="/iot/smart-meter/delete-tariff" class="btn btn-danger btn-sm m-1">Clear Data</a>
-        <a href="/iot/smart-meter/update-tariff" class="btn btn-warning btn-block btn-sm m-1 float-right">Change Tariff to {{ !$tariff ? "High" : "Low" }}</a>
+    <div class="col-md-4 m-auto mb-3">
+        <div class="row mb-2">
+            <div class="col col-md-6">
+                <a href="?" class="btn btn-primary btn-block btn-sm">Refresh</a>
+            </div>
+            <div class="col col-md-6">
+                <a href="/iot/smart-meter/delete-tariff" class="btn btn-danger btn-block btn-sm">Clear Data</a>
+            </div>
+        </div>
+
+        <a href="/iot/smart-meter/update-tariff" class="btn btn-warning btn-block btn-sm float-right">Change Tariff to {{ !$tariff ? "High" : "Low" }}</a>
     </div>
 
     <table class="table table-responsive table-hover">
