@@ -17,7 +17,7 @@ class SmartMetersController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->get('room1')) {
+        if ($request->get('energy1')) {
             $smartMeter = new SmartMeter;
             $smartMeter->smart_meter_room_id = 1;
             $smartMeter->energy = $request->get('energy1');
