@@ -43,6 +43,33 @@
 
 
     <div class="row">
+        <div class="col-md-12 mb-3 alert-info">
+            {{--
+                ROOM 1 + 2:
+                        TOTAL DATA
+                        TABLE OF DATA COLLECTION
+                        GRAPHS
+            --}}
+            <table class="mt-3 table bg-white table-responsive table-hover">
+                <tr>
+                    <th colspan="2" class="text-center">Total Energy Usage all Room(s)</th>
+                </tr>
+                <tr>
+                    <th>Energy</th>
+                    <td> {{ count($smartMeter) > 0 ? ($smartMeter[0]->energy + $smartMeter[1]->energy) : "0" }} Wh </td>
+                </tr>
+                <tr>
+                    <th>Voltage</th>
+                    <td> {{ count($smartMeter) > 0 ? ($smartMeter[0]->voltage + $smartMeter[1]->voltage) : "0" }} V </td>
+                </tr>
+                <tr>
+                    <th>Current</th>
+                    <td>{{ count($smartMeter) > 0 ? ($smartMeter[0]->current + $smartMeter[1]->current) : "0" }} A</td>
+                </tr>
+            </table>
+            <p></p>
+        </div>
+
         <div class="col-md-6 alert-success">
 
             {{--
