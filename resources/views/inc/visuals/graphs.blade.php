@@ -45,6 +45,8 @@
             });
         <?php } ?>
 
+        // Looping data in reverse order for real visuals ---|>
+
         <?php if (isset($smartMeter1)) { ?>
             Highcharts.chart('container', {
                 chart: {
@@ -74,14 +76,14 @@
                 },
                 series: [{
                         name: 'Energy(Wh)',
-                        data: [<?php foreach ($smartMeter1 as $data) { ?> <?= $data->energy . ', ' ?> <?php } ?>]
+                        data: [<?php foreach ($smartMeter1->reverse() as $data) { ?> <?= $data->energy . ', ' ?> <?php } ?>]
                     }, {
                         name: 'Voltage',
-                        data: [<?php foreach ($smartMeter1 as $data) { ?> <?= $data->voltage . ', ' ?> <?php } ?>]
+                        data: [<?php foreach ($smartMeter1->reverse() as $data) { ?> <?= $data->voltage . ', ' ?> <?php } ?>]
                     },
                     {
                         name: 'Current',
-                        data: [<?php foreach ($smartMeter1 as $data) { ?> <?= $data->current . ', ' ?> <?php } ?>]
+                        data: [<?php foreach ($smartMeter1->reverse() as $data) { ?> <?= $data->current . ', ' ?> <?php } ?>]
                     }
                 ]
             });
@@ -117,14 +119,14 @@
                 },
                 series: [{
                         name: 'Energy(Wh)',
-                        data: [<?php foreach ($smartMeter2 as $data) { ?> <?= $data->energy . ', ' ?> <?php } ?>]
+                        data: [<?php foreach ($smartMeter2->reverse() as $data) { ?> <?= $data->energy . ', ' ?> <?php } ?>]
                     }, {
                         name: 'Voltage',
-                        data: [<?php foreach ($smartMeter2 as $data) { ?> <?= $data->voltage . ', ' ?> <?php } ?>]
+                        data: [<?php foreach ($smartMeter2->reverse() as $data) { ?> <?= $data->voltage . ', ' ?> <?php } ?>]
                     },
                     {
                         name: 'Current',
-                        data: [<?php foreach ($smartMeter2 as $data) { ?> <?= $data->current . ', ' ?> <?php } ?>]
+                        data: [<?php foreach ($smartMeter2->reverse() as $data) { ?> <?= $data->current . ', ' ?> <?php } ?>]
                     }
                 ]
             });
