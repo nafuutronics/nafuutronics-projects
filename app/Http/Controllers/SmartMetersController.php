@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SmartMeter;
 use App\Models\SmartMeterTariff;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -39,12 +40,15 @@ class SmartMetersController extends Controller
             ->selectRaw('
                 sum(energy) as energy,
                 sum(voltage) as voltage,
-                sum(current) as current
+                sum(current) as current,
+                smart_meter_room_id
             ')
-            // ->groupBy('smart_meter_room_id')
-            ->first();
-        $smartMeter1 = SmartMeter::where('smart_meter_room_id', 1)->orderBy('id', 'desc')->limit(50)->paginate(10);
-        $smartMeter2 = SmartMeter::where('smart_meter_room_id', 2)->orderBy('id', 'desc')->limit(50)->paginate(10);
+            ->groupBy('smart_meter_room_id')
+            ->orderBy('smart_meter_room_id', 'asc')
+            ->get();
+
+        $smartMeter1 = SmartMeter::where('smart_meter_room_id', 1)->orderBy('id', 'desc')->limit(50)->paginate(20);
+        $smartMeter2 = SmartMeter::where('smart_meter_room_id', 2)->orderBy('id', 'desc')->limit(50)->paginate(20);
         $smartMeterData = SmartMeter::orderBy('id', 'desc')->first();
         $tariff = $this->getTariff();
         return view('iot.smart-meter.index',
@@ -73,7 +77,7 @@ class SmartMetersController extends Controller
         $tariff->is_high = !$tariffData;
         $tariff->save();
 
-        return redirect()->route('smart-meter.index');
+        return redirect()->route('smart-meter.index')->with('success', 'Tariff is now ' . ($tariffData ? 'Low' : 'High') . '!');
     }
 
     public function getTariff()
@@ -91,15 +95,13 @@ class SmartMetersController extends Controller
     public function deleteTariff()
     {
         SmartMeter::where('id', '!=', 0)->delete();
-        return redirect()->route('smart-meter.index');
+        return redirect()->route('smart-meter.index')->with('success', 'All smart meter(s) data has been cleared!');
     }
 
     public function seedSmartMeter()
     {
         Artisan::call('db:seed --class=SmartMeterSeeder');
-        return response()->json([
-            'message' => Artisan::output()
-        ], 200);
+        return redirect()->route('smart-meter.index')->with('success', Artisan::output() . "(50 random data across two rooms)");
     }
 
     /**

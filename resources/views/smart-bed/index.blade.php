@@ -19,17 +19,6 @@ function dateDifference($date_1, $date_2, $differenceFormat = '%a')
     <p class="text-center mb-5">
         <a href="/iot/smart-bed/stunting-who-data" class="btn btn-link"><b>WHO</b> Child Growth Standards </a>
     </p>
-    @if(Session::has('success'))
-    <div class="alert alert-success">
-        {{Session::get('success')}}
-    </div>
-    @endif
-
-    @if(Session::has('error'))
-    <div class="alert alert-danger">
-        {{Session::get('error')}}
-    </div>
-    @endif
     <table class="table table-responsive table-hover">
         @if (count($users) > 0)
         <thead>
