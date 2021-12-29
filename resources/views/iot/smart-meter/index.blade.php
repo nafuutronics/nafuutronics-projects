@@ -28,7 +28,7 @@
                 <a href="?" class="btn btn-primary btn-block btn-sm">Refresh</a>
             </div>
             <div class="col-md-4 mb-2">
-                <a href="/iot/smart-meter/seed" class="btn btn-primary btn-block btn-info btn-sm">Generate Fake Data</a>
+                <a href="/iot/smart-meter/seed" class="btn btn-primary btn-block btn-info btn-sm">Generate Test Data</a>
             </div>
             <div class="col-md-4 mb-2">
                 <a href="/iot/smart-meter/delete-tariff" class="btn btn-danger btn-block btn-sm">Clear Data</a>
