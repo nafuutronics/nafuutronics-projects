@@ -21,7 +21,8 @@
     <main class="flex-shrink-0">
         @include('inc.top-navigation')
         @include('inc.messages')
-        @yield('content')
+            @yield('content')
+        @include('inc.modals')
     </main>
     @include('inc.footer')
     <!-- Bootstrap core JS-->

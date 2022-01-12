@@ -31,7 +31,17 @@
                 <a href="/iot/smart-meter/seed" class="btn btn-primary btn-block btn-info btn-sm">Generate Test Data</a>
             </div>
             <div class="col-md-4 mb-2">
-                <a href="/iot/smart-meter/delete-tariff" class="btn btn-danger btn-block btn-sm">Clear Data</a>
+                <button
+                    type="button"
+                    onclick="setModalData(
+                        'Delete All Data!',
+                        'Are you sure you want do delete all smart meter data?<br><br>This operation is irreversible!',
+                        '/iot/smart-meter/delete-tariff'
+                    )"
+                    class="btn btn-danger btn-block btn-sm"
+                    data-bs-toggle="modal" data-bs-target="#deleteModal"
+                    >Clear Data
+                </button>
             </div>
         </div>
 
