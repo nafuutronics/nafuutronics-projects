@@ -39,7 +39,7 @@ class SmartMetersController extends Controller
         $smartMeter = DB::table('smart_meters')
             ->selectRaw('
                 sum(energy) as energy,
-                sum(voltage) as voltage,
+                avg(voltage) as voltage,
                 sum(current) as current,
                 smart_meter_room_id
             ')
@@ -101,7 +101,7 @@ class SmartMetersController extends Controller
     public function seedSmartMeter()
     {
         Artisan::call('db:seed --class=SmartMeterSeeder');
-        return redirect()->route('smart-meter.index')->with('success', Artisan::output() . "(50 random data across two rooms)");
+        return redirect()->route('smart-meter.index')->with('success', Artisan::output() . "(30 random data across two rooms)");
     }
 
     /**

@@ -28,7 +28,19 @@
                 <a href="?" class="btn btn-primary btn-block btn-sm">Refresh</a>
             </div>
             <div class="col-md-4 mb-2">
-                <a href="/iot/smart-meter/seed" class="btn btn-primary btn-block btn-info btn-sm">Generate Test Data</a>
+                <button
+                    type="button"
+                    onclick="setModalData(
+                        'Generate Test Data',
+                        'Are you sure you want to generate 30 test data?, please do this only when smart meter device is not ready to send actual data.<br><br>Doing this will mix your data collected from smart meter device and test data making the output unobservable!',
+                        '/iot/smart-meter/seed',
+                        'Generate 30 Test Data!',
+                        'primary'
+                    )"
+                    class="btn btn-primary btn-block btn-info btn-sm"
+                    data-bs-toggle="modal" data-bs-target="#deleteModal"
+                    >Generate Test Data
+                </button>
             </div>
             <div class="col-md-4 mb-2">
                 <button
@@ -69,8 +81,8 @@
                     <td> {{ count($smartMeter) > 0 ? ($smartMeter[0]->energy + $smartMeter[1]->energy) : "0" }} Wh </td>
                 </tr>
                 <tr>
-                    <th>Voltage</th>
-                    <td> {{ count($smartMeter) > 0 ? ($smartMeter[0]->voltage + $smartMeter[1]->voltage) : "0" }} V </td>
+                    <th>Voltage (Average)</th>
+                    <td> {{ count($smartMeter) > 0 ? number_format((($smartMeter[0]->voltage + $smartMeter[1]->voltage)) / 2, 1) : "0" }} V </td>
                 </tr>
                 <tr>
                     <th>Current</th>
@@ -98,8 +110,8 @@
                     <td> {{ count($smartMeter) > 0 ? $smartMeter[0]->energy : "0" }} Wh </td>
                 </tr>
                 <tr>
-                    <th>Voltage</th>
-                    <td> {{ count($smartMeter) > 0 ? $smartMeter[0]->voltage : "0" }} V </td>
+                    <th>Voltage (Average)</th>
+                    <td> {{ count($smartMeter) > 0 ? number_format($smartMeter[0]->voltage, 1) : "0" }} V </td>
                 </tr>
                 <tr>
                     <th>Current</th>
@@ -155,8 +167,8 @@
                     <td> {{ count($smartMeter) > 0 ? $smartMeter[1]->energy : "0" }} Wh </td>
                 </tr>
                 <tr>
-                    <th>Voltage</th>
-                    <td> {{ count($smartMeter) > 0 ? $smartMeter[1]->voltage : "0" }} V </td>
+                    <th>Voltage (Average)</th>
+                    <td> {{ count($smartMeter) > 0 ? number_format($smartMeter[1]->voltage, 1) : "0" }} V </td>
                 </tr>
                 <tr>
                     <th>Current</th>
