@@ -18,6 +18,10 @@ class SmartMetersController extends Controller
      */
     public function index(Request $request)
     {
+        $showAll = false;
+        if ($request->get('show-all-data'))
+            $showAll = true;
+
         if ($request->get('energy1')) {
             $smartMeter = new SmartMeter;
             $smartMeter->smart_meter_room_id = 1;
@@ -47,8 +51,8 @@ class SmartMetersController extends Controller
             ->orderBy('smart_meter_room_id', 'asc')
             ->get();
 
-        $smartMeter1 = SmartMeter::where('smart_meter_room_id', 1)->orderBy('id', 'desc')->limit(50)->paginate(20);
-        $smartMeter2 = SmartMeter::where('smart_meter_room_id', 2)->orderBy('id', 'desc')->limit(50)->paginate(20);
+        $smartMeter1 = SmartMeter::where('smart_meter_room_id', 1)->orderBy('id', 'desc')->limit(50)->paginate($showAll ? 100000 : 20);
+        $smartMeter2 = SmartMeter::where('smart_meter_room_id', 2)->orderBy('id', 'desc')->limit(50)->paginate($showAll ? 100000 : 20);
         $smartMeterData = SmartMeter::orderBy('id', 'desc')->first();
         $tariff = $this->getTariff();
         return view('iot.smart-meter.index',
@@ -114,7 +118,11 @@ class SmartMetersController extends Controller
         //
     }
 
-
+    public function calcBilling($kWh, $tariffRate)
+    {
+        // Just for demonstrating unit testing
+        return $kWh * $tariffRate;
+    }
 
     /**
      * Store a newly created resource in storage.

@@ -72,9 +72,6 @@
                         TABLE OF DATA COLLECTION
                         GRAPHS
             --}}
-            <div class="col-12">
-                <a href="?show-all-data=true" class="btn btn-primary float-right btn-sm my-2">Show All Data</a>
-            </div>
             <table class="mt-3 table bg-white table-responsive table-hover">
                 <tr>
                     <th colspan="2" class="text-center">Total Energy Usage all Room(s)</th>
@@ -122,15 +119,6 @@
                 </tr>
             </table>
 
-            <div class="mt-5">
-                <figure class="highcharts-figure">
-                    <div id="container"></div>
-                    <p class="highcharts-description text-center">
-                        This chart shows energy usage collected on smart meter device(s).
-                    </p>
-                </figure>
-            </div>
-
             <div class="mt-5 table-responsive">
                 <h5 class="text-center">Data Collection (Room 1)</h5>
                 <table class="table bg-white table-hover table-bordered">
@@ -152,6 +140,14 @@
                 {{ $smartMeter1->links() }}
             </div>
 
+            <div class="mt-5">
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                    <p class="highcharts-description text-center">
+                        This chart shows energy usage collected on smart meter device(s).
+                    </p>
+                </figure>
+            </div>
         </div>
 
         <div class="col-md-6 mtm-3 alert-warning">
@@ -180,15 +176,6 @@
                 </tr>
             </table>
 
-            <div class="mt-5">
-                <figure class="highcharts-figure">
-                    <div id="container2"></div>
-                    <p class="highcharts-description text-center">
-                        This chart shows energy usage collected on smart meter device(s).
-                    </p>
-                </figure>
-            </div>
-
             <div class="mt-5 table-responsive">
                 <h5 class="text-center">Data Collection (Room 2)</h5>
                 <table class="table bg-white table-hover table-bordered">
@@ -209,6 +196,15 @@
                     @endforeach
                 </table>
                 {{ $smartMeter2->links() }}
+            </div>
+
+            <div class="mt-5">
+                <figure class="highcharts-figure">
+                    <div id="container2"></div>
+                    <p class="highcharts-description text-center">
+                        This chart shows energy usage collected on smart meter device(s).
+                    </p>
+                </figure>
             </div>
         </div>
     </div>
